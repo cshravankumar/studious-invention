@@ -1136,7 +1136,7 @@ shinyServer(function(input, output) {
         a <- droplevels(a)
         return(a)
       })
-      data_c2_inds_op1 <- data_c2_inds_op1_sub()
+      data_c2_s1_brand_op1 <- data_c2_s1_brand_op1_sub()
       
       
       data_c2_s1_brand_op2_sub = reactive({
@@ -1146,7 +1146,7 @@ shinyServer(function(input, output) {
       })
       data_c2_s1_brand_op2 <- data_c2_s1_brand_op2_sub()
     
-      Overall_Comparison(data_c2_inds_op1, data_c2_inds_op2, fromdate, todate)
+      Overall_Comparison(data_c2_s1_brand_op1, data_c2_s1_brand_op2, fromdate, todate)
       
 
     }
@@ -1429,6 +1429,7 @@ shinyServer(function(input, output) {
       })
       data_c1_inds_op2 <- data_c1_inds_op2_sub()
       
+      Price_Comparison(data_c1_inds_op1,data_c1_inds_op2,fromdate,todate)
       
     }
     #################    
@@ -1446,20 +1447,22 @@ shinyServer(function(input, output) {
       data_c2_inds_op1 <- data_c2_inds_op1_sub()
       
       data_c2_s1_brand_op1_sub = reactive({
-        a <- subset(Data_Sentiments, Brand %in% input$c2_s1_brand_op1)
+        a <- subset(data_c2_inds_op1, Brand %in% input$c2_s1_brand_op1)
         a <- droplevels(a)
         return(a)
       })
-      data_c2_inds_op1 <- data_c2_inds_op1_sub()
+      data_c2_s1_brand_op1 <- data_c2_s1_brand_op1_sub()
       
       
       data_c2_s1_brand_op2_sub = reactive({
-        a <- subset(Data_Sentiments, Brand %in% input$c2_s1_brand_op2)
+        a <- subset(data_c2_inds_op1, Brand %in% input$c2_s1_brand_op2)
         a <- droplevels(a)
         return(a)
       })
       data_c2_s1_brand_op2 <- data_c2_s1_brand_op2_sub()
       
+      
+      Price_Comparison(data_c2_s1_brand_op1,data_c2_s1_brand_op2,fromdate,todate)
     }
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Comparison' & input$c2_radioselection_s1 == 'Comparison between two categories'){
@@ -1475,7 +1478,7 @@ shinyServer(function(input, output) {
       data_c2_inds_op1 <- data_c2_inds_op1_sub()
       
       data_c2_s2_cat_op1_sub = reactive({
-        a <- subset(Data_Sentiments, Category %in% input$c2_s2_cat_op1)
+        a <- subset(data_c2_inds_op1, Category %in% input$c2_s2_cat_op1)
         a <- droplevels(a)
         return(a)
       })
@@ -1483,13 +1486,13 @@ shinyServer(function(input, output) {
       
       
       data_c2_s2_cat_op2_sub = reactive({
-        a <- subset(Data_Sentiments, Category %in% input$c2_s2_cat_op2)
+        a <- subset(data_c2_inds_op1, Category %in% input$c2_s2_cat_op2)
         a <- droplevels(a)
         return(a)
       })
       data_c2_s2_cat_op2 <- data_c2_s2_cat_op2_sub()
       
-      
+      Price_Comparison(data_c2_s2_cat_op1,data_c2_s2_cat_op2,fromdate,todate)
       
     }
     
@@ -1512,8 +1515,8 @@ shinyServer(function(input, output) {
       })
       data_c2_s3_cat <- data_c2_s3_cat_sub()
       
-      q <- PriceTimeSeries(data_c2_s3_cat, fromdate, todate)
-      
+      q <- Price_Series(data_c2_s3_cat, fromdate, todate)
+      plot(q)
       
     }
     
@@ -1530,13 +1533,15 @@ shinyServer(function(input, output) {
       data_c2_inds_op1 <- data_c2_inds_op1_sub()
       
       data_c2_s3_brand_sub = reactive({
-        a <- subset(Data_Sentiments, Brand %in% input$c2_s3_brand)
+        a <- subset(data_c2_inds_op1, Brand %in% input$c2_s3_brand)
         a <- droplevels(a)
         return(a)
       })
       data_c2_s3_brand <- data_c2_s3_brand_sub()
       
       
+      q <- Price_Series(data_c2_s3_brand, fromdate, todate)
+      plot(q)
     }
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Analysis' & input$c2_checkbox2_cat == TRUE & input$c2_checkbox2_brand == TRUE) {
@@ -1553,27 +1558,27 @@ shinyServer(function(input, output) {
       
       
       data_c2_s3_cat_sub = reactive({
-        a <- subset(Data_Sentiments, Category %in% input$c2_s3_cat)
+        a <- subset(data_c2_inds_op1, Category %in% input$c2_s3_cat)
         a <- droplevels(a)
         return(a)
       })
       data_c2_s3_cat <- data_c2_s3_cat_sub()
-      
-      
+    
       
       data_c2_s3_brand_sub = reactive({
-        a <- subset(Data_Sentiments, Brand %in% input$c2_s3_brand)
+        a <- subset(data_c2_s3_cat, Brand %in% input$c2_s3_brand)
         a <- droplevels(a)
         return(a)
       })
       data_c2_s3_brand <- data_c2_s3_brand_sub()
       
-      
+      q <- Price_Series(data_c2_s3_brand, fromdate, todate)
+      plot(q)
     }
     
     #################    
     #CHOICE THREE
-    #################    
+    ################    
     else if (input$main_radioselection == 'Comparison of Two Brands') {
       
       fromdate <- reactive(input$datefrom)
@@ -1594,7 +1599,7 @@ shinyServer(function(input, output) {
       })
       data_c3_brand_op2 <- data_c3_brand_op2_sub()
       
-      
+      Price_Comparison(data_c3_brand_op1,data_c3_brand_op2,fromdate,todate)
       
       
     }
@@ -1617,7 +1622,7 @@ shinyServer(function(input, output) {
       
       
       data_c4_s1_cat_op1_sub = reactive({
-        a <- subset(Data_Sentiments, Category %in% input$c4_s1_cat_op1)
+        a <- subset(data_c4_brand, Category %in% input$c4_s1_cat_op1)
         a <- droplevels(a)
         return(a)
       })
@@ -1625,12 +1630,13 @@ shinyServer(function(input, output) {
       
       
       data_c4_s1_cat_op2_sub = reactive({
-        a <- subset(Data_Sentiments, Category %in% input$c4_s1_cat_op2)
+        a <- subset(data_c4_brand, Category %in% input$c4_s1_cat_op2)
         a <- droplevels(a)
         return(a)
       })
       data_c4_s1_cat_op2 <- data_c4_s1_cat_op2_sub()
       
+      Price_Comparison(data_c4_s1_cat_op1,data_c4_s1_cat_op2,fromdate,todate)
     }
     
     else if (input$main_radioselection == 'Analysis of a Brand' & input$c4_radioselection == 'Analysis' & input$c4_s2_cat == TRUE){
@@ -1647,13 +1653,15 @@ shinyServer(function(input, output) {
       
       
       data_c4_s3_cat_sub = reactive({
-        a <- subset(Data_Sentiments, Category %in% input$c4_s3_cat)
+        a <- subset(data_c4_brand, Category %in% input$c4_s3_cat)
         a <- droplevels(a)
         return(a)
       })
       data_c4_s3_cat <- data_c4_s3_cat_sub()
       
       
+      q=Price_Series(data_c4_s3_cat,fromdate,todate)
+      plot(q)
     }
     
     else if (input$main_radioselection == 'Analysis of a Brand' & input$c4_radioselection == 'Analysis' & input$c4_s2_cat == FALSE){
@@ -1670,6 +1678,8 @@ shinyServer(function(input, output) {
       data_c4_brand <- data_c4_brand_sub()
       
       
+      q=Price_Series(data_c4_brand,fromdate,todate)
+      plot(q)
     }
     
     #################    
@@ -1710,8 +1720,9 @@ shinyServer(function(input, output) {
       })
       data_c1_inds_op2 <- data_c1_inds_op2_sub()
       
-      
+      Quality_Comparison(data_c1_inds_op1,data_c1_inds_op2,fromdate,todate)
     }
+    
     #################    
     #CHOICE TWO
     #################    
@@ -1727,20 +1738,22 @@ shinyServer(function(input, output) {
       data_c2_inds_op1 <- data_c2_inds_op1_sub()
       
       data_c2_s1_brand_op1_sub = reactive({
-        a <- subset(Data_Sentiments, Brand %in% input$c2_s1_brand_op1)
+        a <- subset(data_c2_inds_op1, Brand %in% input$c2_s1_brand_op1)
         a <- droplevels(a)
         return(a)
       })
-      data_c2_inds_op1 <- data_c2_inds_op1_sub()
+      data_c2_s1_brand_op1 <- data_c2_s1_brand_op1_sub()
       
       
       data_c2_s1_brand_op2_sub = reactive({
-        a <- subset(Data_Sentiments, Brand %in% input$c2_s1_brand_op2)
+        a <- subset(data_c2_inds_op1, Brand %in% input$c2_s1_brand_op2)
         a <- droplevels(a)
         return(a)
       })
       data_c2_s1_brand_op2 <- data_c2_s1_brand_op2_sub()
-      
+     
+     
+     Quality_Comparison(data_c2_s1_brand_op1,data_c2_s1_brand_op2,fromdate,todate)
     }
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Comparison' & input$c2_radioselection_s1 == 'Comparison between two categories'){
@@ -1756,7 +1769,7 @@ shinyServer(function(input, output) {
       data_c2_inds_op1 <- data_c2_inds_op1_sub()
       
       data_c2_s2_cat_op1_sub = reactive({
-        a <- subset(Data_Sentiments, Category %in% input$c2_s2_cat_op1)
+        a <- subset(data_c2_inds_op1, Category %in% input$c2_s2_cat_op1)
         a <- droplevels(a)
         return(a)
       })
@@ -1764,14 +1777,14 @@ shinyServer(function(input, output) {
       
       
       data_c2_s2_cat_op2_sub = reactive({
-        a <- subset(Data_Sentiments, Category %in% input$c2_s2_cat_op2)
+        a <- subset(data_c2_inds_op1, Category %in% input$c2_s2_cat_op2)
         a <- droplevels(a)
         return(a)
       })
       data_c2_s2_cat_op2 <- data_c2_s2_cat_op2_sub()
       
       
-      
+      Quality_Comparison(data_c2_s2_cat_op1,data_c2_s2_cat_op2,fromdate,todate)
     }
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Analysis' & input$c2_checkbox2_cat == TRUE) {
@@ -1793,8 +1806,8 @@ shinyServer(function(input, output) {
       })
       data_c2_s3_cat <- data_c2_s3_cat_sub()
       
-      q <- PriceTimeSeries(data_c2_s3_cat, fromdate, todate)
-      
+      q <- Quality_Series(data_c2_s3_cat, fromdate, todate)
+      print(q)
       
     }
     
@@ -1811,12 +1824,14 @@ shinyServer(function(input, output) {
       data_c2_inds_op1 <- data_c2_inds_op1_sub()
       
       data_c2_s3_brand_sub = reactive({
-        a <- subset(Data_Sentiments, Brand %in% input$c2_s3_brand)
+        a <- subset(data_c2_inds_op1, Brand %in% input$c2_s3_brand)
         a <- droplevels(a)
         return(a)
       })
       data_c2_s3_brand <- data_c2_s3_brand_sub()
       
+      q <- Quality_Series(data_c2_s3_brand, fromdate, todate)
+      print(q)
       
     }
     
@@ -1834,21 +1849,23 @@ shinyServer(function(input, output) {
       
       
       data_c2_s3_cat_sub = reactive({
-        a <- subset(Data_Sentiments, Category %in% input$c2_s3_cat)
+        a <- subset(data_c2_inds_op1, Category %in% input$c2_s3_cat)
         a <- droplevels(a)
         return(a)
       })
       data_c2_s3_cat <- data_c2_s3_cat_sub()
       
       
-      
       data_c2_s3_brand_sub = reactive({
-        a <- subset(Data_Sentiments, Brand %in% input$c2_s3_brand)
+        a <- subset(data_c2_s3_cat, Brand %in% input$c2_s3_brand)
         a <- droplevels(a)
         return(a)
       })
       data_c2_s3_brand <- data_c2_s3_brand_sub()
       
+      
+      q <- Quality_Series(data_c2_s3_brand, fromdate, todate)
+      print(q)
       
     }
     
