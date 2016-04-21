@@ -2,7 +2,7 @@
 #SentimentTimeSeries <- function(DB = data.frame(Industry = dataset["Industry"], Category = dataset["Category"], Brand = dataset["Brand"], ReviewTime = dataset["reviewTime"], Sentiment.Score = dataset["Sentiment.Score"], reviewTime = as.Date(0,origin="1970-01-01"), SalesRank = dataset["SalesRank"], Overall = dataset["overall"], Price = dataset["Price"], Quality = dataset["Quality"]))
 ##############################################
 
-
+a
 
 
 
