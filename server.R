@@ -247,7 +247,24 @@ Overall_Comparison <- function(DB1 = temp1, DB2 = temp2, fromdate, todate)
   }
   
   ###graph tot sentiment
-  ts.plot(cbind(avgsent1, avgsent2), gpars=list(xlab="time", ylab="total_sentiment", lty=c(1:5)))
+  timematrix=cbind(avgsent1,avgsent2)
+
+myts=ts(timematrix, start=c(SY, SM), end=c(FY, FM), frequency=12)
+
+color=c("green","blue")
+plot(myts,plot.type = "single", col=color,lty=(2:1),ylab="Sentiment")
+title(main="Overall Sentiment", col.main="red", font.main=10)
+legend("topright",
+       inset=0,
+       cex = 0.5,
+       title="Legend",
+       c("Choice 1","Choice 2"),
+       horiz=FALSE,
+       lty=c(2:1),
+       lwd=c(2,2),
+       col=c("green","blue"),
+       bg="grey96")
+  
   
   ###graph price  
   #ts.plot(cbind(p_avgsent1, p_avgsent2), gpars=list(xlab="time", ylab="total_sentiment", lty=c(1:5)))
@@ -460,7 +477,24 @@ Price_Comparison <- function(DB1 = temp1, DB2 = temp2, fromdate, todate)
   #ts.plot(cbind(avgsent1, avgsent2), gpars=list(xlab="time", ylab="total_sentiment", lty=c(1:5)))
   
   ###graph price  
-  ts.plot(cbind(p_avgsent1, p_avgsent2), gpars=list(xlab="time", ylab="total_sentiment", lty=c(1:5)))
+  
+    timematrix=cbind(p_avgsent1,p_avgsent2)
+
+myts=ts(timematrix, start=c(SY, SM), end=c(FY, FM), frequency=12)
+
+color=c("green","blue")
+plot(myts,plot.type = "single", col=color,lty=(2:1),ylab="Sentiment")
+title(main="Price Sentiment", col.main="red", font.main=10)
+legend("topright",
+       inset=0,
+       cex = 0.5,
+       title="Legend",
+       c("Choice 1","Choice 2"),
+       horiz=FALSE,
+       lty=c(2:1),
+       lwd=c(2,2),
+       col=c("green","blue"),
+       bg="grey96")
   
   ###graph quality
   #ts.plot(cbind(q_avgsent1, q_avgsent2), gpars=list(xlab="time", ylab="total_sentiment", lty=c(1:5)))
@@ -673,7 +707,24 @@ Quality_Comparison<- function(DB1 = temp1, DB2 = temp2, fromdate, todate)
   #ts.plot(cbind(p_avgsent1, p_avgsent2), gpars=list(xlab="time", ylab="total_sentiment", lty=c(1:5)))
   
   ###graph quality
-  ts.plot(cbind(q_avgsent1, q_avgsent2), gpars=list(xlab="time", ylab="total_sentiment", lty=c(1:5)))
+  
+    timematrix=cbind(q_avgsent1,q_avgsent2)
+
+myts=ts(timematrix, start=c(SY, SM), end=c(FY, FM), frequency=12)
+
+color=c("green","blue")
+plot(myts,plot.type = "single", col=color,lty=(2:1),ylab="Sentiment")
+title(main="Quality Sentiment", col.main="red", font.main=10)
+legend("topright",
+       inset=0,
+       cex = 0.5,
+       title="Legend",
+       c("Choice 1","Choice 2"),
+       horiz=FALSE,
+       lty=c(2:1),
+       lwd=c(2,2),
+       col=c("green","blue"),
+       bg="grey96")
   
   
 }
@@ -1305,7 +1356,8 @@ shinyServer(function(input, output) {
       
       q <- Overall_Series(data_c2_s3_cat, fromdate, todate)
       
-      plot(q)
+      plot(q,ylab="Sentiment",col="grey")
+      title(main="Overall Sentiment", col.main="red", font.main=10)
       
     }
     
@@ -1333,7 +1385,8 @@ shinyServer(function(input, output) {
       
       q <- Overall_Series(data_c2_s3_brand, fromdate, todate)
       
-      plot(q)
+      plot(q,ylab="Sentiment",col="grey")
+title(main="Quality Sentiment", col.main="red", font.main=10)
     }
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Analysis' & input$c2_checkbox2_cat == TRUE & input$c2_checkbox2_brand == TRUE) {
@@ -1371,7 +1424,8 @@ shinyServer(function(input, output) {
       
       q <- Overall_Series(data_c2_s3_brand, fromdate, todate)
       
-      plot(q)
+      plot(q,ylab="Sentiment",col="grey")
+title(main="Overall Sentiment", col.main="red", font.main=10)
       
       
     }
@@ -1473,7 +1527,8 @@ shinyServer(function(input, output) {
       
       q <- Overall_Series(data_c4_s3_cat, fromdate, todate)
       
-      plot(q)
+      plot(q,ylab="Sentiment",col="grey")
+title(main="Overall Sentiment", col.main="red", font.main=10)
       
     }
     
@@ -1495,7 +1550,8 @@ shinyServer(function(input, output) {
       
       q <- Overall_Series(data_c4_brand, fromdate, todate)
       
-      plot(q)
+      plot(q,ylab="Sentiment",col="grey")
+title(main="Overall Sentiment", col.main="red", font.main=10)
       
     }
     
@@ -1646,7 +1702,8 @@ shinyServer(function(input, output) {
       data_c2_s3_cat <- data_c2_s3_cat_sub()
       
       q <- Price_Series(data_c2_s3_cat, fromdate, todate)
-      plot(q)
+      plot(myts,ylab="Sentiment",col="grey")
+title(main="Price Sentiment", col.main="red", font.main=10)
       
     }
     
@@ -1674,7 +1731,8 @@ shinyServer(function(input, output) {
       
       
       q <- Price_Series(data_c2_s3_brand, fromdate, todate)
-      plot(q)
+      plot(q,ylab="Sentiment",col="grey")
+title(main="Price Sentiment", col.main="red", font.main=10)
     }
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Analysis' & input$c2_checkbox2_cat == TRUE & input$c2_checkbox2_brand == TRUE) {
@@ -1709,7 +1767,8 @@ shinyServer(function(input, output) {
       data_c2_s3_brand <- data_c2_s3_brand_sub()
       
       q <- Price_Series(data_c2_s3_brand, fromdate, todate)
-      plot(q)
+      plot(q,ylab="Sentiment",col="grey")
+title(main="Price Sentiment", col.main="red", font.main=10)
     }
     
     #################    
@@ -1806,7 +1865,8 @@ shinyServer(function(input, output) {
       
       
       q=Price_Series(data_c4_s3_cat,fromdate,todate)
-      plot(q)
+      plot(q,ylab="Sentiment",col="grey")
+title(main="Price Sentiment", col.main="red", font.main=10)
     }
     
     else if (input$main_radioselection == 'Analysis of a Brand' & input$c4_radioselection == 'Analysis' & input$c4_s2_cat == FALSE){
@@ -1827,7 +1887,8 @@ shinyServer(function(input, output) {
       
       
       q=Price_Series(data_c4_brand,fromdate,todate)
-      plot(q)
+      plot(q,ylab="Sentiment",col="grey")
+title(main="Price Sentiment", col.main="red", font.main=10)
     }
     
     #################    
@@ -1964,7 +2025,8 @@ shinyServer(function(input, output) {
       data_c2_s3_cat <- data_c2_s3_cat_sub()
       
       q <- Quality_Series(data_c2_s3_cat, fromdate, todate)
-      print(q)
+      plot(q,ylab="Sentiment",col="grey")
+title(main="Quality Sentiment", col.main="red", font.main=10)
       
     }
     
@@ -1991,7 +2053,8 @@ shinyServer(function(input, output) {
       data_c2_s3_brand <- data_c2_s3_brand_sub()
       
       q <- Quality_Series(data_c2_s3_brand, fromdate, todate)
-      print(q)
+      plot(q,ylab="Sentiment",col="grey")
+title(main="Quality Sentiment", col.main="red", font.main=10)
       
     }
     
@@ -2028,7 +2091,8 @@ shinyServer(function(input, output) {
       
       
       q <- Quality_Series(data_c2_s3_brand, fromdate, todate)
-      print(q)
+      plot(q,ylab="Sentiment",col="grey")
+title(main="Quality Sentiment", col.main="red", font.main=10)
       
     }
     
@@ -2128,7 +2192,8 @@ shinyServer(function(input, output) {
       
       
       q=Quality_Series(data_c4_s3_cat,fromdate,todate)
-      plot(q)
+      plot(q,ylab="Sentiment",col="grey")
+title(main="Quality Sentiment", col.main="red", font.main=10)
     }
     
     else if (input$main_radioselection == 'Analysis of a Brand' & input$c4_radioselection == 'Analysis' & input$c4_s2_cat == FALSE){
@@ -2148,7 +2213,8 @@ shinyServer(function(input, output) {
       data_c4_brand <- data_c4_brand_sub()
       
       q=Quality_Series(data_c4_brand,fromdate,todate)
-      plot(q)
+      plot(q,ylab="Sentiment",col="grey")
+title(main="Quality Sentiment", col.main="red", font.main=10)
     }
     
     #################    
