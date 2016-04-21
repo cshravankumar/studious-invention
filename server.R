@@ -4,7 +4,7 @@
 
 ###WORDCLOUD FUNCTION FOR 1 DB
 
-Series_Wordcloud <- function(DBcloud = temp)
+Wordcloud_Series <- function(DBcloud = temp)
 {
   
 library(tm)
@@ -24,7 +24,7 @@ wordcloud(corpus,max.words=200,random.order=FALSE)
 
 ###WORDCLOUD FUNCTION FOR 2 DB
 
-Comparison_Wordcloud <- function(DBcloud1 = temp1, DBcloud2 = temp2)
+Wordcloud_Comparison <- function(DBcloud1 = temp1, DBcloud2 = temp2)
 {
   
 library(tm)
@@ -1012,6 +1012,16 @@ Quality_Series <- function(DB = temp, fromdate, todate)
 }
 #################################
 #END OF FUNCTION
+
+
+
+
+
+
+
+
+
+
 
 
 
