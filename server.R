@@ -2,7 +2,55 @@
 #SentimentTimeSeries <- function(DB = data.frame(Industry = dataset["Industry"], Category = dataset["Category"], Brand = dataset["Brand"], ReviewTime = dataset["reviewTime"], Sentiment.Score = dataset["Sentiment.Score"], reviewTime = as.Date(0,origin="1970-01-01"), SalesRank = dataset["SalesRank"], Overall = dataset["overall"], Price = dataset["Price"], Quality = dataset["Quality"]))
 ##############################################
 
-a
+###WORDCLOUD FUNCTION FOR 1 DB
+
+Series_Wordcloud <- function(DBcloud = temp)
+{
+  
+library(tm)
+library(SnowballC)
+library(wordcloud)
+
+corpus=Corpus(VectorSource(temp$reviewText))
+corpus=tm_map(corpus,PlainTextDocument)
+corpus=tm_map(corpus,removePunctuation)
+orpus=tm_map(corpus,removeWords,stopwords('english'))
+corpus=tm_map(corpus,stemDocument)
+wordcloud(corpus,max.words=200,random.order=FALSE)
+# optional removing words --- corpus=tm_map(corpus,removeWords,c("time","just"))
+
+}
+
+
+###WORDCLOUD FUNCTION FOR 2 DB
+
+Comparison_Wordcloud <- function(DBcloud1 = temp1, DBcloud2 = temp2)
+{
+  
+library(tm)
+library(SnowballC)
+library(wordcloud)
+
+corpus1=Corpus(VectorSource(temp1$reviewText))
+corpus1=tm_map(corpus1,PlainTextDocument)
+corpus1=tm_map(corpus1,removePunctuation)
+corpus1=tm_map(corpus1,removeWords,stopwords('english'))
+corpus1=tm_map(corpus1,stemDocument)
+wordcloud(corpus1,max.words=200,random.order=FALSE)
+
+corpus2=Corpus(VectorSource(temp2$reviewText))
+corpus2=tm_map(corpus2,PlainTextDocument)
+corpus2=tm_map(corpus2,removePunctuation)
+corpus2=tm_map(corpus2,removeWords,stopwords('english'))
+corpus2=tm_map(corpus2,stemDocument)
+wordcloud(corpus2,max.words=200,random.order=FALSE)
+
+}
+
+
+
+
+
 
 
 
@@ -112,9 +160,15 @@ Overall_Comparison <- function(DB1 = temp1, DB2 = temp2, fromdate, todate)
     {
       avgsent1[j]=NA
     }
+    if(!is.na(p_avgsent1[j]) && p_avgsent1[j] > 1)
+    {
+      p_avgsent1[j]=NA
+    }
+    if(!is.na(q_avgsent1[j]) && q_avgsent1[j] > 1)
+    {
+      q_avgsent1[j]=NA
+    }
   }
-  
-  print(avgsent1)
   
   
   intlength2=(FY-SY)*12+(FM-SM+1)
@@ -132,7 +186,7 @@ Overall_Comparison <- function(DB1 = temp1, DB2 = temp2, fromdate, todate)
   q_frequency2=c(0,length=intlength2)
   q_avgsent2=c(0,length=intlength2)
   qa2=qb2=qc2=0
-  
+
   i=1
   for (i in 1:length(DB2$reviewTime))
   {
@@ -161,17 +215,23 @@ Overall_Comparison <- function(DB1 = temp1, DB2 = temp2, fromdate, todate)
       }
   }
   
-i = 1
   j=1
-  for (j in 1:intlength2)
+  for (j in 1:intlength1)
   {
-    if(!is.na(avgsent2[j]) && avgsent2[j]>i)
+    
+    if(!is.na(avgsent2[j]) && avgsent2[j] > 1)
     {
       avgsent2[j]=NA
     }
+    if(!is.na(p_avgsent2[j]) && p_avgsent2[j] > 1)
+    {
+      p_avgsent2[j]=NA
+    }
+    if(!is.na(q_avgsent2[j]) && q_avgsent2[j] > 1)
+    {
+      q_avgsent2[j]=NA
+    }
   }
-  
-  print(avgsent2)
   
   ###graph tot sentiment
   ts.plot(cbind(avgsent1, avgsent2), gpars=list(xlab="time", ylab="total_sentiment", lty=c(1:5)))
@@ -285,6 +345,24 @@ Price_Comparison <- function(DB1 = temp1, DB2 = temp2, fromdate, todate)
     }
   }
   
+  j=1
+  for (j in 1:intlength1)
+  {
+    
+    if(!is.na(avgsent1[j]) && avgsent1[j] > 1)
+    {
+      avgsent1[j]=NA
+    }
+    if(!is.na(p_avgsent1[j]) && p_avgsent1[j] > 1)
+    {
+      p_avgsent1[j]=NA
+    }
+    if(!is.na(q_avgsent1[j]) && q_avgsent1[j] > 1)
+    {
+      q_avgsent1[j]=NA
+    }
+  }
+  
   
   
   intlength2=(FY-SY)*12+(FM-SM+1)
@@ -330,6 +408,26 @@ Price_Comparison <- function(DB1 = temp1, DB2 = temp2, fromdate, todate)
       q_avgsent2[(DB2$year[i]-SY)*12+(DB2$month[i]-SM+1)]=qa2/qb2
     }
   }
+  
+  
+  j=1
+  for (j in 1:intlength2)
+  {
+    
+    if(!is.na(avgsent2[j]) && avgsent2[j] > 1)
+    {
+      avgsent2[j]=NA
+    }
+    if(!is.na(p_avgsent2[j]) && p_avgsent2[j] > 1)
+    {
+      p_avgsent2[j]=NA
+    }
+    if(!is.na(q_avgsent2[j]) && q_avgsent2[j] > 1)
+    {
+      q_avgsent2[j]=NA
+    }
+  }
+  
   
   ###graph tot sentiment
   #ts.plot(cbind(avgsent1, avgsent2), gpars=list(xlab="time", ylab="total_sentiment", lty=c(1:5)))
@@ -442,6 +540,24 @@ Quality_Comparison<- function(DB1 = temp1, DB2 = temp2, fromdate, todate)
     }
   }
   
+  j=1
+  for (j in 1:intlength1)
+  {
+    
+    if(!is.na(avgsent1[j]) && avgsent1[j] > 1)
+    {
+      avgsent1[j]=NA
+    }
+    if(!is.na(p_avgsent1[j]) && p_avgsent1[j] > 1)
+    {
+      p_avgsent1[j]=NA
+    }
+    if(!is.na(q_avgsent1[j]) && q_avgsent1[j] > 1)
+    {
+      q_avgsent1[j]=NA
+    }
+  }
+  
   
   
   intlength2=(FY-SY)*12+(FM-SM+1)
@@ -487,6 +603,25 @@ Quality_Comparison<- function(DB1 = temp1, DB2 = temp2, fromdate, todate)
       q_avgsent2[(DB2$year[i]-SY)*12+(DB2$month[i]-SM+1)]=qa2/qb2
     }
   }
+  
+  j=1
+  for (j in 1:intlength2)
+  {
+    
+    if(!is.na(avgsent2[j]) && avgsent2[j] > 1)
+    {
+      avgsent2[j]=NA
+    }
+    if(!is.na(p_avgsent2[j]) && p_avgsent2[j] > 1)
+    {
+      p_avgsent2[j]=NA
+    }
+    if(!is.na(q_avgsent2[j]) && q_avgsent2[j] > 1)
+    {
+      q_avgsent2[j]=NA
+    }
+  }
+  
   
   ###graph tot sentiment
   #ts.plot(cbind(avgsent1, avgsent2), gpars=list(xlab="time", ylab="total_sentiment", lty=c(1:5)))
@@ -598,6 +733,24 @@ Overall_Series <- function(DB = temp, fromdate, todate)
   }
   
   
+  j=1
+  for (j in 1:intlength)
+  {
+    
+    if(!is.na(avgsent[j]) && avgsent[j] > 1)
+    {
+      avgsent[j]=NA
+    }
+    if(!is.na(p_avgsent[j]) && p_avgsent[j] > 1)
+    {
+      p_avgsent[j]=NA
+    }
+    if(!is.na(q_avgsent[j]) && q_avgsent[j] > 1)
+    {
+      q_avgsent[j]=NA
+    }
+  }
+  
   ###graph tot sentiment
   total_sentiment=ts(avgsent, start=c(SY, SM), end=c(FY, FM), frequency=12)
   #plot(total_sentiment)
@@ -695,6 +848,23 @@ Price_Series <- function(DB = temp, fromdate, todate)
       }
   }
   
+  j=1
+  for (j in 1:intlength)
+  {
+    
+    if(!is.na(avgsent[j]) && avgsent[j] > 1)
+    {
+      avgsent[j]=NA
+    }
+    if(!is.na(p_avgsent[j]) && p_avgsent[j] > 1)
+    {
+      p_avgsent[j]=NA
+    }
+    if(!is.na(q_avgsent[j]) && q_avgsent[j] > 1)
+    {
+      q_avgsent[j]=NA
+    }
+  }
   
   ###graph tot sentiment
   #total_sentiment=ts(avgsent, start=c(SY, SM), end=c(FY, FM), frequency=12)
@@ -804,6 +974,23 @@ Quality_Series <- function(DB = temp, fromdate, todate)
       }
   }
   
+  j=1
+  for (j in 1:intlength)
+  {
+    
+    if(!is.na(avgsent[j]) && avgsent[j] > 1)
+    {
+      avgsent[j]=NA
+    }
+    if(!is.na(p_avgsent[j]) && p_avgsent[j] > 1)
+    {
+      p_avgsent[j]=NA
+    }
+    if(!is.na(q_avgsent[j]) && q_avgsent[j] > 1)
+    {
+      q_avgsent[j]=NA
+    }
+  }
   
   ###graph tot sentiment
   #total_sentiment=ts(avgsent, start=c(SY, SM), end=c(FY, FM), frequency=12)
