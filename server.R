@@ -1893,7 +1893,7 @@ shinyServer(function(input, output) {
       data_c3_brand_op2 <- data_c3_brand_op2_sub()
       
       
-      
+      Quality_Comparison(data_c3_brand_op1,data_c3_brand_op2,fromdate,todate)
       
     }
     
@@ -1915,7 +1915,7 @@ shinyServer(function(input, output) {
       
       
       data_c4_s1_cat_op1_sub = reactive({
-        a <- subset(Data_Sentiments, Category %in% input$c4_s1_cat_op1)
+        a <- subset(data_c4_brand, Category %in% input$c4_s1_cat_op1)
         a <- droplevels(a)
         return(a)
       })
@@ -1923,11 +1923,14 @@ shinyServer(function(input, output) {
       
       
       data_c4_s1_cat_op2_sub = reactive({
-        a <- subset(Data_Sentiments, Category %in% input$c4_s1_cat_op2)
+        a <- subset(data_c4_brand, Category %in% input$c4_s1_cat_op2)
         a <- droplevels(a)
         return(a)
       })
       data_c4_s1_cat_op2 <- data_c4_s1_cat_op2_sub()
+      
+      
+      Quality_Comparison(data_c4_s1_cat_op1,data_c4_s1_cat_op2,fromdate,todate)
       
     }
     
@@ -1945,13 +1948,15 @@ shinyServer(function(input, output) {
       
       
       data_c4_s3_cat_sub = reactive({
-        a <- subset(Data_Sentiments, Category %in% input$c4_s3_cat)
+        a <- subset(data_c4_brand, Category %in% input$c4_s3_cat)
         a <- droplevels(a)
         return(a)
       })
       data_c4_s3_cat <- data_c4_s3_cat_sub()
       
       
+      q=Quality_Series(data_c4_s3_cat,fromdate,todate)
+      plot(q)
     }
     
     else if (input$main_radioselection == 'Analysis of a Brand' & input$c4_radioselection == 'Analysis' & input$c4_s2_cat == FALSE){
@@ -1967,7 +1972,8 @@ shinyServer(function(input, output) {
       })
       data_c4_brand <- data_c4_brand_sub()
       
-      
+      q=Quality_Series(data_c4_brand,fromdate,todate)
+      plot(q)
     }
     
     #################    
@@ -1979,6 +1985,14 @@ shinyServer(function(input, output) {
     #END OF RENDER PLOT
     
   })
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
