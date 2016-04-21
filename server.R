@@ -7,9 +7,6 @@
 
 
 
-###THIS IS A DEMO COLLABORATION
-
-
 
 ###COMPARISON TIME SERIES FUNCTION
 Overall_Comparison <- function(DB1 = temp1, DB2 = temp2, fromdate, todate)
