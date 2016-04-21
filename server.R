@@ -94,19 +94,32 @@ Overall_Comparison <- function(DB1 = temp1, DB2 = temp2, fromdate, todate)
   DB2$month=as.numeric(DB2$month)
   DB2$day=as.numeric(DB2$day)
   
+  division=c("-","-")
+  timevector=as.character(fromdate)
+  time=strsplit(timevector,division,fixed=TRUE)
+  i=1
+  for (i in 1:length(fromdate))
+  {
+    print(time)
+    #time[[i]][2]=gsub(",","",time[[i]][2])
+    SY=as.integer(time[[i]][1])
+    SM=as.integer(time[[i]][2])
+    #  DB1$day[i]=time[[i]][2]
+  }
   
   
-  #assumption for trying
-  #fromdate
-  #todate
-  
-  
-  SY=2010
-  SM=7
-  FY=2013
-  FM=1
-  
-  
+  division=c("-","-")
+  timevector=as.character(todate)
+  time=strsplit(timevector,division,fixed=TRUE)
+  i=1
+  for (i in 1:length(todate))
+  {
+    #time[[i]][2]=gsub(",","",time[[i]][2])
+    print(time)
+    FY=as.integer(time[[i]][1])
+    FM=as.integer(time[[i]][2])
+    #  DB1$day[i]=time[[i]][2]
+  }
   
   intlength1=(FY-SY)*12+(FM-SM+1)
   totscore1=c(0,length=intlength1)
@@ -288,18 +301,32 @@ Price_Comparison <- function(DB1 = temp1, DB2 = temp2, fromdate, todate)
   DB2$day=as.numeric(DB2$day)
   
   
+  division=c("-","-")
+  timevector=as.character(fromdate)
+  time=strsplit(timevector,division,fixed=TRUE)
+  i=1
+  for (i in 1:length(fromdate))
+  {
+    print(time)
+    #time[[i]][2]=gsub(",","",time[[i]][2])
+    SY=as.integer(time[[i]][1])
+    SM=as.integer(time[[i]][2])
+    #  DB1$day[i]=time[[i]][2]
+  }
   
-  #assumption for trying
-  #fromdate
-  #todate
   
-  
-  SY=2009
-  SM=4
-  FY=2013
-  FM=1
-  
-  
+  division=c("-","-")
+  timevector=as.character(todate)
+  time=strsplit(timevector,division,fixed=TRUE)
+  i=1
+  for (i in 1:length(todate))
+  {
+    #time[[i]][2]=gsub(",","",time[[i]][2])
+    print(time)
+    FY=as.integer(time[[i]][1])
+    FM=as.integer(time[[i]][2])
+    #  DB1$day[i]=time[[i]][2]
+  }
   
   intlength1=(FY-SY)*12+(FM-SM+1)
   totscore1=c(0,length=intlength1)
@@ -484,16 +511,32 @@ Quality_Comparison<- function(DB1 = temp1, DB2 = temp2, fromdate, todate)
   
   
   
-  #assumption for trying
-  #fromdate
-  #todate
+  division=c("-","-")
+  timevector=as.character(fromdate)
+  time=strsplit(timevector,division,fixed=TRUE)
+  i=1
+  for (i in 1:length(fromdate))
+  {
+    print(time)
+    #time[[i]][2]=gsub(",","",time[[i]][2])
+    SY=as.integer(time[[i]][1])
+    SM=as.integer(time[[i]][2])
+    #  DB1$day[i]=time[[i]][2]
+  }
   
   
-  SY=2009
-  SM=4
-  FY=2013
-  FM=1
-  
+  division=c("-","-")
+  timevector=as.character(todate)
+  time=strsplit(timevector,division,fixed=TRUE)
+  i=1
+  for (i in 1:length(todate))
+  {
+    #time[[i]][2]=gsub(",","",time[[i]][2])
+    print(time)
+    FY=as.integer(time[[i]][1])
+    FM=as.integer(time[[i]][2])
+    #  DB1$day[i]=time[[i]][2]
+  }
   
   
   intlength1=(FY-SY)*12+(FM-SM+1)
@@ -675,18 +718,32 @@ Overall_Series <- function(DB = temp, fromdate, todate)
   DB$month=as.numeric(DB$month)
   DB$day=as.numeric(DB$day)
   
+  division=c("-","-")
+  timevector=as.character(fromdate)
+  time=strsplit(timevector,division,fixed=TRUE)
+  i=1
+  for (i in 1:length(fromdate))
+  {
+    print(time)
+    #time[[i]][2]=gsub(",","",time[[i]][2])
+    SY=as.integer(time[[i]][1])
+    SM=as.integer(time[[i]][2])
+    #  DB1$day[i]=time[[i]][2]
+  }
   
   
-  #SM=month(fromdate)
-  #FY=year(todate)
-  #FM=month(todate)
-  
-  SY=2009
-  SM=4
-  FY=2013
-  FM=1
-  
-  
+  division=c("-","-")
+  timevector=as.character(todate)
+  time=strsplit(timevector,division,fixed=TRUE)
+  i=1
+  for (i in 1:length(todate))
+  {
+    #time[[i]][2]=gsub(",","",time[[i]][2])
+    print(time)
+    FY=as.integer(time[[i]][1])
+    FM=as.integer(time[[i]][2])
+    #  DB1$day[i]=time[[i]][2]
+  }
   
   intlength=(FY-SY)*12+(FM-SM+1)
   totscore=c(0,length=intlength)
@@ -795,14 +852,32 @@ Price_Series <- function(DB = temp, fromdate, todate)
   DB$month=as.numeric(DB$month)
   DB$day=as.numeric(DB$day)
   
+  division=c("-","-")
+  timevector=as.character(fromdate)
+  time=strsplit(timevector,division,fixed=TRUE)
+  i=1
+  for (i in 1:length(fromdate))
+  {
+    print(time)
+    #time[[i]][2]=gsub(",","",time[[i]][2])
+    SY=as.integer(time[[i]][1])
+    SM=as.integer(time[[i]][2])
+    #  DB1$day[i]=time[[i]][2]
+  }
   
   
-  SY=2009
-  SM=4
-  FY=2013
-  FM=1
-  
-  
+  division=c("-","-")
+  timevector=as.character(todate)
+  time=strsplit(timevector,division,fixed=TRUE)
+  i=1
+  for (i in 1:length(todate))
+  {
+    #time[[i]][2]=gsub(",","",time[[i]][2])
+    print(time)
+    FY=as.integer(time[[i]][1])
+    FM=as.integer(time[[i]][2])
+    #  DB1$day[i]=time[[i]][2]
+  }
   
   intlength=(FY-SY)*12+(FM-SM+1)
   totscore=c(0,length=intlength)
@@ -915,19 +990,32 @@ Quality_Series <- function(DB = temp, fromdate, todate)
   ####################
   #TIME SERIES CODE
   ####################
+  division=c("-","-")
+  timevector=as.character(fromdate)
+  time=strsplit(timevector,division,fixed=TRUE)
+  i=1
+  for (i in 1:length(fromdate))
+  {
+    print(time)
+    #time[[i]][2]=gsub(",","",time[[i]][2])
+    SY=as.integer(time[[i]][1])
+    SM=as.integer(time[[i]][2])
+    #  DB1$day[i]=time[[i]][2]
+  }
   
-  #assumption for trying
-  #fromdate
-  #todate
   
-  
-  
-  
-  SY=2009
-  SM=4
-  FY=2013
-  FM=1
-  
+  division=c("-","-")
+  timevector=as.character(todate)
+  time=strsplit(timevector,division,fixed=TRUE)
+  i=1
+  for (i in 1:length(todate))
+  {
+    #time[[i]][2]=gsub(",","",time[[i]][2])
+    print(time)
+    FY=as.integer(time[[i]][1])
+    FM=as.integer(time[[i]][2])
+    #  DB1$day[i]=time[[i]][2]
+  }
   
   
   intlength=(FY-SY)*12+(FM-SM+1)
@@ -1081,9 +1169,12 @@ shinyServer(function(input, output) {
     #################           
     if(input$main_radioselection == 'Comparison of Two Industries'){
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
-
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
+      
       c1_inds_op1 <- reactive(input$c1_inds_op1)
       c1_inds_op2 <- reactive(input$c2_inds_op1)
       
@@ -1121,8 +1212,11 @@ shinyServer(function(input, output) {
     #CHOICE TWO
     #################    
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Comparison' & input$c2_radioselection_s1 == 'Comparison between two brands'){
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+     # fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -1153,8 +1247,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Comparison' & input$c2_radioselection_s1 == 'Comparison between two categories'){
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -1185,8 +1282,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Analysis' & input$c2_checkbox2_cat == TRUE) {
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+     # fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -1211,8 +1311,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Analysis' & input$c2_checkbox2_brand == TRUE) {
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -1235,8 +1338,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Analysis' & input$c2_checkbox2_cat == TRUE & input$c2_checkbox2_brand == TRUE) {
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -1275,8 +1381,11 @@ shinyServer(function(input, output) {
     #################    
     else if (input$main_radioselection == 'Comparison of Two Brands') {
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+     # fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c3_brand_op1_sub = reactive({
         a <- subset(Data_Sentiments, Brand %in% input$c3_brand_op1)
@@ -1304,8 +1413,11 @@ shinyServer(function(input, output) {
     else if (input$main_radioselection == 'Analysis of a Brand' & input$c4_radioselection == 'Comparison') {
       
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c4_brand_sub = reactive({
         a <- subset(Data_Sentiments, Brand %in% input$c4_brand)
@@ -1337,8 +1449,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of a Brand' & input$c4_radioselection == 'Analysis' & input$c4_s2_cat == TRUE){
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+     # fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c4_brand_sub = reactive({
         a <- subset(Data_Sentiments, Brand %in% input$c4_brand)
@@ -1365,8 +1480,11 @@ shinyServer(function(input, output) {
     else if (input$main_radioselection == 'Analysis of a Brand' & input$c4_radioselection == 'Analysis' & input$c4_s2_cat == FALSE){
       
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+    #  fromdate <- reactive(input$datefrom)
+     # todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c4_brand_sub = reactive({
         a <- subset(Data_Sentiments, Brand %in% input$c4_brand)
@@ -1411,8 +1529,11 @@ shinyServer(function(input, output) {
     #################           
     if(input$main_radioselection == 'Comparison of Two Industries'){
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c1_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c1_inds_op1)
@@ -1436,8 +1557,11 @@ shinyServer(function(input, output) {
     #CHOICE TWO
     #################    
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Comparison' & input$c2_radioselection_s1 == 'Comparison between two brands'){
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+     # fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -1467,8 +1591,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Comparison' & input$c2_radioselection_s1 == 'Comparison between two categories'){
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+     # fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -1498,8 +1625,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Analysis' & input$c2_checkbox2_cat == TRUE) {
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -1522,8 +1652,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Analysis' & input$c2_checkbox2_brand == TRUE) {
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -1546,8 +1679,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Analysis' & input$c2_checkbox2_cat == TRUE & input$c2_checkbox2_brand == TRUE) {
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -1581,8 +1717,11 @@ shinyServer(function(input, output) {
     ################    
     else if (input$main_radioselection == 'Comparison of Two Brands') {
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+     # fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c3_brand_op1_sub = reactive({
         a <- subset(Data_Sentiments, Brand %in% input$c3_brand_op1)
@@ -1610,8 +1749,11 @@ shinyServer(function(input, output) {
     else if (input$main_radioselection == 'Analysis of a Brand' & input$c4_radioselection == 'Comparison') {
       
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c4_brand_sub = reactive({
         a <- subset(Data_Sentiments, Brand %in% input$c4_brand)
@@ -1641,8 +1783,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of a Brand' & input$c4_radioselection == 'Analysis' & input$c4_s2_cat == TRUE){
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c4_brand_sub = reactive({
         a <- subset(Data_Sentiments, Brand %in% input$c4_brand)
@@ -1667,8 +1812,11 @@ shinyServer(function(input, output) {
     else if (input$main_radioselection == 'Analysis of a Brand' & input$c4_radioselection == 'Analysis' & input$c4_s2_cat == FALSE){
       
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+     # fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c4_brand_sub = reactive({
         a <- subset(Data_Sentiments, Brand %in% input$c4_brand)
@@ -1702,8 +1850,11 @@ shinyServer(function(input, output) {
     #################           
     if(input$main_radioselection == 'Comparison of Two Industries'){
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c1_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c1_inds_op1)
@@ -1727,8 +1878,11 @@ shinyServer(function(input, output) {
     #CHOICE TWO
     #################    
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Comparison' & input$c2_radioselection_s1 == 'Comparison between two brands'){
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -1789,8 +1943,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Analysis' & input$c2_checkbox2_cat == TRUE) {
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -1813,8 +1970,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Analysis' & input$c2_checkbox2_brand == TRUE) {
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -1837,8 +1997,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Analysis' & input$c2_checkbox2_cat == TRUE & input$c2_checkbox2_brand == TRUE) {
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -1874,8 +2037,11 @@ shinyServer(function(input, output) {
     #################    
     else if (input$main_radioselection == 'Comparison of Two Brands') {
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+     # fromdate <- reactive(input$datefrom)
+    #  todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c3_brand_op1_sub = reactive({
         a <- subset(Data_Sentiments, Brand %in% input$c3_brand_op1)
@@ -1903,8 +2069,11 @@ shinyServer(function(input, output) {
     else if (input$main_radioselection == 'Analysis of a Brand' & input$c4_radioselection == 'Comparison') {
       
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c4_brand_sub = reactive({
         a <- subset(Data_Sentiments, Brand %in% input$c4_brand)
@@ -1936,8 +2105,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of a Brand' & input$c4_radioselection == 'Analysis' & input$c4_s2_cat == TRUE){
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c4_brand_sub = reactive({
         a <- subset(Data_Sentiments, Brand %in% input$c4_brand)
@@ -1962,8 +2134,11 @@ shinyServer(function(input, output) {
     else if (input$main_radioselection == 'Analysis of a Brand' & input$c4_radioselection == 'Analysis' & input$c4_s2_cat == FALSE){
       
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c4_brand_sub = reactive({
         a <- subset(Data_Sentiments, Brand %in% input$c4_brand)
@@ -2019,8 +2194,11 @@ shinyServer(function(input, output) {
     #################           
     if(input$main_radioselection == 'Comparison of Two Industries'){
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+     # fromdate <- reactive(input$datefrom)
+    #  todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c1_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c1_inds_op1)
@@ -2043,8 +2221,11 @@ shinyServer(function(input, output) {
     #CHOICE TWO
     #################    
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Comparison' & input$c2_radioselection_s1 == 'Comparison between two brands'){
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+     # fromdate <- reactive(input$datefrom)
+    #  todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -2072,8 +2253,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Comparison' & input$c2_radioselection_s1 == 'Comparison between two categories'){
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+     # fromdate <- reactive(input$datefrom)
+    #  todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -2103,8 +2287,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Analysis' & input$c2_checkbox2_cat == TRUE) {
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -2125,8 +2312,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Analysis' & input$c2_checkbox2_brand == TRUE) {
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -2147,8 +2337,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Analysis' & input$c2_checkbox2_cat == TRUE & input$c2_checkbox2_brand == TRUE) {
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -2182,8 +2375,11 @@ shinyServer(function(input, output) {
     #################    
     else if (input$main_radioselection == 'Comparison of Two Brands') {
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c3_brand_op1_sub = reactive({
         a <- subset(Data_Sentiments, Brand %in% input$c3_brand_op1)
@@ -2211,8 +2407,11 @@ shinyServer(function(input, output) {
     else if (input$main_radioselection == 'Analysis of a Brand' & input$c4_radioselection == 'Comparison') {
       
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c4_brand_sub = reactive({
         a <- subset(Data_Sentiments, Brand %in% input$c4_brand)
@@ -2241,8 +2440,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of a Brand' & input$c4_radioselection == 'Analysis' & input$c4_s2_cat == TRUE){
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c4_brand_sub = reactive({
         a <- subset(Data_Sentiments, Brand %in% input$c4_brand)
@@ -2265,8 +2467,11 @@ shinyServer(function(input, output) {
     else if (input$main_radioselection == 'Analysis of a Brand' & input$c4_radioselection == 'Analysis' & input$c4_s2_cat == FALSE){
       
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c4_brand_sub = reactive({
         a <- subset(Data_Sentiments, Brand %in% input$c4_brand)
@@ -2310,8 +2515,11 @@ shinyServer(function(input, output) {
     #################           
     if(input$main_radioselection == 'Comparison of Two Industries'){
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c1_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c1_inds_op1)
@@ -2334,8 +2542,11 @@ shinyServer(function(input, output) {
     #CHOICE TWO
     #################    
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Comparison' & input$c2_radioselection_s1 == 'Comparison between two brands'){
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -2363,8 +2574,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Comparison' & input$c2_radioselection_s1 == 'Comparison between two categories'){
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -2394,8 +2608,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Analysis' & input$c2_checkbox2_cat == TRUE) {
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -2416,8 +2633,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Analysis' & input$c2_checkbox2_brand == TRUE) {
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -2438,8 +2658,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of an Industry' & input$c2_radioselection == 'Analysis' & input$c2_checkbox2_cat == TRUE & input$c2_checkbox2_brand == TRUE) {
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c2_inds_op1_sub = reactive({
         a <- subset(Data_Sentiments, Industry %in% input$c2_inds_op1)
@@ -2473,8 +2696,11 @@ shinyServer(function(input, output) {
     #################    
     else if (input$main_radioselection == 'Comparison of Two Brands') {
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c3_brand_op1_sub = reactive({
         a <- subset(Data_Sentiments, Brand %in% input$c3_brand_op1)
@@ -2502,8 +2728,11 @@ shinyServer(function(input, output) {
     else if (input$main_radioselection == 'Analysis of a Brand' & input$c4_radioselection == 'Comparison') {
       
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c4_brand_sub = reactive({
         a <- subset(Data_Sentiments, Brand %in% input$c4_brand)
@@ -2532,8 +2761,11 @@ shinyServer(function(input, output) {
     
     else if (input$main_radioselection == 'Analysis of a Brand' & input$c4_radioselection == 'Analysis' & input$c4_s2_cat == TRUE){
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c4_brand_sub = reactive({
         a <- subset(Data_Sentiments, Brand %in% input$c4_brand)
@@ -2556,8 +2788,11 @@ shinyServer(function(input, output) {
     else if (input$main_radioselection == 'Analysis of a Brand' & input$c4_radioselection == 'Analysis' & input$c4_s2_cat == FALSE){
       
       
-      fromdate <- reactive(input$datefrom)
-      todate <- reactive(input$dateto)
+      #fromdate <- reactive(input$datefrom)
+      #todate <- reactive(input$dateto)
+      fromdate <- (input$datefrom)
+      todate <- ((input$dateto))
+      
       
       data_c4_brand_sub = reactive({
         a <- subset(Data_Sentiments, Brand %in% input$c4_brand)

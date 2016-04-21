@@ -7,7 +7,7 @@
 # Set the path to our folder
 getwd()
 dir = "Historical prices/"
-#source("HMWK#1.R")
+source("HMWK#1.R")
 library(shiny)
 library(ggplot2)
 # Define UI for application that draws a histogram
