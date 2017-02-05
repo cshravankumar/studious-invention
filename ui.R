@@ -1,8 +1,6 @@
 #############################
-# Thomas Cerbelaud | Shravan Kumar Chandrasekaran | Mathilde Sirbu
-# SIEO 4150 
-# Homework 3 , Group problem
-# Due date: 09/15
+# Guido Giardini | Shravan Kumar Chandrasekaran | Richa Sharma | Nishant Jain | Akshit Mehta
+
 #############################
 # Set the path to our folder
 getwd()
